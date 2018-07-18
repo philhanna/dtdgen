@@ -17,7 +17,7 @@ import com.philhanna.dtdgen.DocumentModel;
 import com.philhanna.dtdgen.modelbuilder.DocumentModelBuilder;
 
 /**
- * Unit tests for getting the root element of a bodu
+ * Unit tests for getting the root element of a body
  */
 public class TestGetsRootElement extends BaseTest {
 
@@ -40,9 +40,8 @@ public class TestGetsRootElement extends BaseTest {
          throws IOException, SAXException {
       
       // Analyze the xml file to get a document model
-      
-      final File inputFile = new File(testDir, fileName);
-      final InputStream in = new FileInputStream(inputFile);
+
+      final InputStream in = getTestData(fileName);
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
       modelBuilder.run(in);
       in.close();

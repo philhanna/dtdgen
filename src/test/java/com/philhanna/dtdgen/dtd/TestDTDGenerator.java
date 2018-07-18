@@ -31,15 +31,10 @@ public class TestDTDGenerator extends BaseTest {
    @Test
    public void runDTDGenerator() throws IOException, SAXException {
 
-      // Get the known good file
-
-      final File benchedFile = new File(testDir, "allgraphs.dtd");
-
       // Analyze the input XML file
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final File inputFile = new File(testDir, "allgraphs.xml");
-      final InputStream in = new FileInputStream(inputFile);
+      final InputStream in = getTestData("allgraphs.xml");
       modelBuilder.run(in);
       in.close();
 
@@ -57,17 +52,19 @@ public class TestDTDGenerator extends BaseTest {
       out.flush();
       out.close();
 
+      final InputStream stream1 = getTestData("allgraphs.dtd");
+      final InputStream stream2 = new FileInputStream(outputFile);
+
       // Compare the files to see if any change has happened
 
-      assertFilesEquals(benchedFile, outputFile);
+      assertStreamsEquals(stream1, stream2);
    }
 
    @Test
    public void getsCorrectRootElement() throws IOException, SAXException {
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final File inputFile = new File(testDir, "allgraphs.xml");
-      final InputStream in = new FileInputStream(inputFile);
+      final InputStream in = getTestData("allgraphs.xml");
       modelBuilder.run(in);
       in.close();
 
@@ -83,9 +80,7 @@ public class TestDTDGenerator extends BaseTest {
       // Analyze an .xml file to build a document model
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final File inputFile = new File("./Testware/Data/bench1.xml")
-            .getCanonicalFile();
-      final InputStream in = new FileInputStream(inputFile);
+      final InputStream in = getTestData("bench1.xml");
       modelBuilder.run(in);
       in.close();
       
@@ -122,9 +117,7 @@ public class TestDTDGenerator extends BaseTest {
       // Analyze an .xml file to build a document model
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final File inputFile = new File("./Testware/Data/bench1.xml")
-            .getCanonicalFile();
-      final InputStream in = new FileInputStream(inputFile);
+      final InputStream in = getTestData("bench1.xml");
       modelBuilder.run(in);
       in.close();
 

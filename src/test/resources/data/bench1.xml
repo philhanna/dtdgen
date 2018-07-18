@@ -1,0 +1,252 @@
+<Analysis major="3" minor="3" maint="0">
+  <Sections>
+    <Section type="Price" priceStressEnabled="false" cubeName="BankDemo_Phil_Day1.rskcdesc">
+      <Expressions/>
+      <RoleAssignments>
+        <ClassVars>
+          <ClassVar name="region"/>
+          <ClassVar name="country"/>
+          <ClassVar name="city"/>
+        </ClassVars>
+        <Cubes>
+          <Cube name="16Jun2014" index="0"/>
+        </Cubes>
+        <BenchmarkVars>
+          <BenchmarkVar name="ComparisonVaR1"/>
+          <BenchmarkVar name="ComparisonVaR2"/>
+        </BenchmarkVars>
+        <ComputedVars>
+          <ComputedVar name="COMPUTEDVAR"/>
+        </ComputedVars>
+        <InstrumentVars>
+          <InstrumentVar name="StateNumber1"/>
+        </InstrumentVars>
+        <Horizons>
+          <Horizon name="17Jun2014" index="1" horizonKey="0" interval="DAY" count="1" cube="0"/>
+        </Horizons>
+        <Statistics>
+          <Statistic name="VAR"/>
+        </Statistics>
+        <RowStatistics>
+          <RowStatistic name="NINST"/>
+        </RowStatistics>
+        <UserStatistics/>
+        <OutputVars>
+          <OutputVar name="PL" simulated="1"/>
+        </OutputVars>
+        <Scenarios/>
+        <MeasureFormats/>
+        <ColumnFormats/>
+      </RoleAssignments>
+      <CubeQuery>
+        <Query/>
+        <Query>
+          <Member name="Asia"/>
+        </Query>
+        <Query>
+          <Member name="Asia"/>
+          <Member name="China"/>
+        </Query>
+      </CubeQuery>
+      <DrillPath/>
+      <Visuals>
+        <CellBasedGraphs>
+          <Graph type="DistributionGraph" graphId="boxPlotGraphDistributionGraphController16081" linked="true">
+            <CellContext horizonCubeId="0" horizonIndex="1" horizonKey="0" outputVar="PL" statistic="VAR" classVar="city">
+              <Member variable="region" value="Asia"/>
+              <Member variable="country" value="China"/>
+              <Member variable="city" value="Hong Kong"/>
+            </CellContext>
+          </Graph>
+        </CellBasedGraphs>
+        <VisualsLayout/>
+        <TileContainer>
+          <tileDividedBoxLayout>
+            <tile id="crosstab" percentWidth="100" percentHeight="50"/>
+            <tile id="boxPlotGraphDistributionGraphController16081" percentWidth="100" percentHeight="50"/>
+          </tileDividedBoxLayout>
+          <VisibleTiles>
+            <VisibleTile id="crosstab"/>
+            <VisibleTile id="boxPlotGraphDistributionGraphController16081"/>
+          </VisibleTiles>
+          <SelectedTile id="boxPlotGraphDistributionGraphController16081" maximized="false"/>
+        </TileContainer>
+      </Visuals>
+      <Filters/>
+      <QueryOptions>
+        <QueryOption key="ALPHA" value="0.95"/>
+        <QueryOption key="PCTLDEF" value="1"/>
+        <QueryOption key="NDENSITY" value="32"/>
+        <QueryOption key="KERNEL" value="0"/>
+        <QueryOption key="NRFIM" value="10"/>
+        <QueryOption key="NROWS" value="500"/>
+        <QueryOption key="NDETAILS" value="500"/>
+      </QueryOptions>
+      <SortRequest/>
+      <Scenarios/>
+      <DisplayRules/>
+      <DataPanel>
+        <DataItem itemType="Folder" name="ClassVar" label="Class Variables" folderType="ClassVar" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="ClassVar" name="region" label="region" index="0"/>
+          <DataItem itemType="ClassVar" name="country" label="country" index="1"/>
+          <DataItem itemType="ClassVar" name="city" label="city" index="2"/>
+          <DataItem itemType="ClassVar" name="InstID" label="InstID" index="3"/>
+        </DataItem>
+        <DataItem itemType="Folder" name="Horizon" label="Horizons" folderType="Horizon" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="Cube" name="16Jun2014" label="16Jun2014" index="0"/>
+          <DataItem itemType="Horizon" name="17Jun2014" label="17Jun2014" index="0" horizonNumber="0" interval="DAY" count="1" cube="0"/>
+        </DataItem>
+        <DataItem itemType="Folder" name="OutputVar" label="Output Variables" folderType="OutputVar" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="OutputVar" name="VALUE" label="VALUE" index="0"/>
+          <DataItem itemType="OutputVar" name="PL" label="PL" index="1"/>
+          <DataItem itemType="Folder" name="Non-Simulated" label="Non-Simulated" folderType="OutputVar" isTopLevelFolder="false" locked="true" parent="OutputVar">
+            <DataItem itemType="OutputVar" name="CURLY" label="CURLY" index="2"/>
+            <DataItem itemType="OutputVar" name="LARRY" label="LARRY" index="3"/>
+            <DataItem itemType="OutputVar" name="MOE" label="MOE" index="4"/>
+          </DataItem>
+        </DataItem>
+        <DataItem itemType="Folder" name="ComputedVar" label="Computed Variables" folderType="ComputedVar" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="ComputedVar" name="COMPUTEDVAR" label="COMPUTEDVAR" index="0"/>
+        </DataItem>
+        <DataItem itemType="Folder" name="InstrumentVar" label="Instrument Variables" folderType="InstrumentVar" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="InstrumentVar" name="StateNumber1" label="StateNumber1" index="0"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber2" label="StateNumber2" index="1"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber3" label="StateNumber3" index="2"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber4" label="StateNumber4" index="3"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber5" label="StateNumber5" index="4"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber6" label="StateNumber6" index="5"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber7" label="StateNumber7" index="6"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber8" label="StateNumber8" index="7"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber9" label="StateNumber9" index="8"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber10" label="StateNumber10" index="9"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber11" label="StateNumber11" index="10"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber12" label="StateNumber12" index="11"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber13" label="StateNumber13" index="12"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber14" label="StateNumber14" index="13"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber15" label="StateNumber15" index="14"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber16" label="StateNumber16" index="15"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber17" label="StateNumber17" index="16"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber18" label="StateNumber18" index="17"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber19" label="StateNumber19" index="18"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber20" label="StateNumber20" index="19"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber21" label="StateNumber21" index="20"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber22" label="StateNumber22" index="21"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber23" label="StateNumber23" index="22"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber24" label="StateNumber24" index="23"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber25" label="StateNumber25" index="24"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber26" label="StateNumber26" index="25"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber27" label="StateNumber27" index="26"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber28" label="StateNumber28" index="27"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber29" label="StateNumber29" index="28"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber30" label="StateNumber30" index="29"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber31" label="StateNumber31" index="30"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber32" label="StateNumber32" index="31"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber33" label="StateNumber33" index="32"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber34" label="StateNumber34" index="33"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber35" label="StateNumber35" index="34"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber36" label="StateNumber36" index="35"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber37" label="StateNumber37" index="36"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber38" label="StateNumber38" index="37"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber39" label="StateNumber39" index="38"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber40" label="StateNumber40" index="39"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber41" label="StateNumber41" index="40"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber42" label="StateNumber42" index="41"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber43" label="StateNumber43" index="42"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber44" label="StateNumber44" index="43"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber45" label="StateNumber45" index="44"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber46" label="StateNumber46" index="45"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber47" label="StateNumber47" index="46"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber48" label="StateNumber48" index="47"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber49" label="StateNumber49" index="48"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber50" label="StateNumber50" index="49"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber51" label="StateNumber51" index="50"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber52" label="StateNumber52" index="51"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber53" label="StateNumber53" index="52"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber54" label="StateNumber54" index="53"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber55" label="StateNumber55" index="54"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber56" label="StateNumber56" index="55"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber57" label="StateNumber57" index="56"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber58" label="StateNumber58" index="57"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber59" label="StateNumber59" index="58"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber60" label="StateNumber60" index="59"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber61" label="StateNumber61" index="60"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber62" label="StateNumber62" index="61"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber63" label="StateNumber63" index="62"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber64" label="StateNumber64" index="63"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber65" label="StateNumber65" index="64"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber66" label="StateNumber66" index="65"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber67" label="StateNumber67" index="66"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber68" label="StateNumber68" index="67"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber69" label="StateNumber69" index="68"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber70" label="StateNumber70" index="69"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber71" label="StateNumber71" index="70"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber72" label="StateNumber72" index="71"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber73" label="StateNumber73" index="72"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber74" label="StateNumber74" index="73"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber75" label="StateNumber75" index="74"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber76" label="StateNumber76" index="75"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber77" label="StateNumber77" index="76"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber78" label="StateNumber78" index="77"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber79" label="StateNumber79" index="78"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber80" label="StateNumber80" index="79"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber81" label="StateNumber81" index="80"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber82" label="StateNumber82" index="81"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber83" label="StateNumber83" index="82"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber84" label="StateNumber84" index="83"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber85" label="StateNumber85" index="84"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber86" label="StateNumber86" index="85"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber87" label="StateNumber87" index="86"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber88" label="StateNumber88" index="87"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber89" label="StateNumber89" index="88"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber90" label="StateNumber90" index="89"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber91" label="StateNumber91" index="90"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber92" label="StateNumber92" index="91"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber93" label="StateNumber93" index="92"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber94" label="StateNumber94" index="93"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber95" label="StateNumber95" index="94"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber96" label="StateNumber96" index="95"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber97" label="StateNumber97" index="96"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber98" label="StateNumber98" index="97"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber99" label="StateNumber99" index="98"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber100" label="StateNumber100" index="99"/>
+          <DataItem itemType="InstrumentVar" name="StateNumber101" label="StateNumber101" index="100"/>
+        </DataItem>
+        <DataItem itemType="Folder" name="BenchmarkVar" label="Benchmark Variables" folderType="BenchmarkVar" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="BenchmarkVar" name="ComparisonVaR1" label="ComparisonVaR1" index="0"/>
+          <DataItem itemType="BenchmarkVar" name="ComparisonVaR2" label="ComparisonVaR2" index="1"/>
+        </DataItem>
+        <DataItem itemType="Folder" name="Statistic" label="Statistics" folderType="Statistic" isTopLevelFolder="true" locked="false">
+          <DataItem itemType="RowStatistic" name="NINST" label="NInst" index="0"/>
+          <DataItem itemType="RowStatistic" name="EXPDATE" label="Staleness" index="1"/>
+          <DataItem itemType="Statistic" name="NUMPRICE" label="N" index="0"/>
+          <DataItem itemType="Statistic" name="MIN" label="Min" index="1"/>
+          <DataItem itemType="Statistic" name="MEAN" label="Mean" index="2"/>
+          <DataItem itemType="Statistic" name="MEDIAN" label="Median" index="3"/>
+          <DataItem itemType="Statistic" name="MAX" label="Max" index="4"/>
+          <DataItem itemType="Statistic" name="SKEWNESS" label="Skewness" index="5"/>
+          <DataItem itemType="Statistic" name="KURTOSIS" label="Kurtosis" index="6"/>
+          <DataItem itemType="Statistic" name="STD" label="Std" index="7"/>
+          <DataItem itemType="Statistic" name="ES" label="ES" index="8"/>
+          <DataItem itemType="Statistic" name="VAR" label="VaR" index="9"/>
+          <DataItem itemType="Statistic" name="Q1" label="FirstQuartile" index="10"/>
+          <DataItem itemType="Statistic" name="Q3" label="ThirdQuartile" index="11"/>
+          <DataItem itemType="Statistic" name="TAILINDEX" label="TailIndex" index="12"/>
+          <DataItem itemType="Statistic" name="VAREVT" label="VaREVT" index="13"/>
+          <DataItem itemType="Statistic" name="CONDES" label="CondExpectedLoss" index="14"/>
+          <DataItem itemType="Statistic" name="VAR_L" label="VaR_L" index="15"/>
+          <DataItem itemType="Statistic" name="VAR_U" label="VaR_U" index="16"/>
+          <DataItem itemType="Statistic" name="CONTVAR" label="ContributionVaR" index="17"/>
+          <DataItem itemType="Statistic" name="CONTES" label="ContributionES" index="18"/>
+          <DataItem itemType="Statistic" name="INCVAR" label="IncVaR" index="19"/>
+          <DataItem itemType="Statistic" name="VARWO" label="VaRWO" index="20"/>
+          <DataItem itemType="Statistic" name="ESWO" label="ESWO" index="21"/>
+          <DataItem itemType="Statistic" name="INCES" label="IncES" index="22"/>
+          <DataItem itemType="Statistic" name="VARPCT" label="VarPct" index="23"/>
+          <DataItem itemType="Statistic" name="VARPCT_L" label="VarPct_L" index="24"/>
+          <DataItem itemType="Statistic" name="VARPCT_U" label="VarPct_U" index="25"/>
+          <DataItem itemType="RowStatistic" name="ALERTDATE" label="AlertDate" index="2"/>
+        </DataItem>
+      </DataPanel>
+    </Section>
+  </Sections>
+</Analysis>

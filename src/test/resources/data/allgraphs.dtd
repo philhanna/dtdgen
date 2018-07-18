@@ -1,0 +1,151 @@
+<!ELEMENT Analysis ( Sections ) >
+<!ATTLIST Analysis major NMTOKEN #REQUIRED >
+<!ATTLIST Analysis minor NMTOKEN #REQUIRED >
+<!ATTLIST Analysis maint NMTOKEN #REQUIRED >
+
+<!ELEMENT Sections ( Section ) >
+
+<!ELEMENT Section ( Expressions, RoleAssignments, CubeQuery, DrillPath, Visuals, Filters, QueryOptions, SortRequest, Scenarios, DisplayRules, DataPanel ) >
+<!ATTLIST Section type NMTOKEN #REQUIRED >
+<!ATTLIST Section priceStressEnabled NMTOKEN #REQUIRED >
+<!ATTLIST Section cubeName NMTOKEN #REQUIRED >
+
+<!ELEMENT Expressions EMPTY >
+
+<!ELEMENT RoleAssignments ( ClassVars, Cubes, BenchmarkVars, ComputedVars, InstrumentVars, Horizons, Statistics, RowStatistics, UserStatistics, OutputVars, Scenarios, MeasureFormats, ColumnFormats ) >
+
+<!ELEMENT ClassVars ( ClassVar+ ) >
+
+<!ELEMENT ClassVar EMPTY >
+<!ATTLIST ClassVar name NMTOKEN #REQUIRED >
+
+<!ELEMENT Cubes ( Cube+ ) >
+
+<!ELEMENT Cube EMPTY >
+<!ATTLIST Cube name CDATA #REQUIRED >
+<!ATTLIST Cube index NMTOKEN #REQUIRED >
+
+<!ELEMENT BenchmarkVars EMPTY >
+
+<!ELEMENT ComputedVars ( ComputedVar ) >
+
+<!ELEMENT ComputedVar EMPTY >
+<!ATTLIST ComputedVar name NMTOKEN #REQUIRED >
+
+<!ELEMENT InstrumentVars EMPTY >
+
+<!ELEMENT Horizons ( Horizon+ ) >
+
+<!ELEMENT Horizon EMPTY >
+<!ATTLIST Horizon name CDATA #REQUIRED >
+<!ATTLIST Horizon index NMTOKEN #REQUIRED >
+<!ATTLIST Horizon horizonKey NMTOKEN #REQUIRED >
+<!ATTLIST Horizon interval NMTOKEN #REQUIRED >
+<!ATTLIST Horizon count NMTOKEN #REQUIRED >
+<!ATTLIST Horizon cube NMTOKEN #REQUIRED >
+
+<!ELEMENT Statistics ( Statistic+ ) >
+
+<!ELEMENT Statistic EMPTY >
+<!ATTLIST Statistic name NMTOKEN #REQUIRED >
+
+<!ELEMENT RowStatistics EMPTY >
+
+<!ELEMENT UserStatistics EMPTY >
+
+<!ELEMENT OutputVars ( OutputVar ) >
+
+<!ELEMENT OutputVar EMPTY >
+<!ATTLIST OutputVar name NMTOKEN #REQUIRED >
+<!ATTLIST OutputVar simulated NMTOKEN #REQUIRED >
+
+<!ELEMENT Scenarios EMPTY >
+
+<!ELEMENT MeasureFormats EMPTY >
+
+<!ELEMENT ColumnFormats EMPTY >
+
+<!ELEMENT CubeQuery ( Query+ ) >
+
+<!ELEMENT Query ( Member+ ) >
+
+<!ELEMENT Member EMPTY >
+<!ATTLIST Member name CDATA #IMPLIED >
+<!ATTLIST Member variable ( Region | Entity | Strategy | Desk ) #IMPLIED >
+<!ATTLIST Member value CDATA #IMPLIED >
+
+<!ELEMENT DrillPath EMPTY >
+
+<!ELEMENT Visuals ( CellBasedGraphs, PortfolioDetails, VisualsLayout, TileContainer ) >
+
+<!ELEMENT CellBasedGraphs ( Graph+ ) >
+
+<!ELEMENT Graph ( CellContext ) >
+<!ATTLIST Graph type NMTOKEN #REQUIRED >
+<!ATTLIST Graph graphId NMTOKEN #REQUIRED >
+<!ATTLIST Graph linked NMTOKEN #FIXED "true" >
+<!ATTLIST Graph showCumulative NMTOKEN #IMPLIED >
+
+<!ELEMENT CellContext ( Member+ ) >
+<!ATTLIST CellContext outputVar NMTOKEN #REQUIRED >
+<!ATTLIST CellContext classVar NMTOKEN #REQUIRED >
+<!ATTLIST CellContext horizonCubeId NMTOKEN #IMPLIED >
+<!ATTLIST CellContext horizonIndex NMTOKEN #IMPLIED >
+<!ATTLIST CellContext horizonKey NMTOKEN #IMPLIED >
+<!ATTLIST CellContext statistic NMTOKEN #IMPLIED >
+
+<!ELEMENT PortfolioDetails EMPTY >
+
+<!ELEMENT VisualsLayout EMPTY >
+
+<!ELEMENT TileContainer ( tileDividedBoxLayout, VisibleTiles, SelectedTile ) >
+
+<!ELEMENT tileDividedBoxLayout ( tile, dividedBox+ ) >
+
+<!ELEMENT tile EMPTY >
+<!ATTLIST tile id NMTOKEN #REQUIRED >
+<!ATTLIST tile percentWidth NMTOKEN #REQUIRED >
+<!ATTLIST tile percentHeight NMTOKEN #REQUIRED >
+
+<!ELEMENT dividedBox ( tile+ ) >
+<!ATTLIST dividedBox direction NMTOKEN #REQUIRED >
+<!ATTLIST dividedBox percentWidth NMTOKEN #REQUIRED >
+<!ATTLIST dividedBox percentHeight NMTOKEN #REQUIRED >
+
+<!ELEMENT VisibleTiles ( VisibleTile+ ) >
+
+<!ELEMENT VisibleTile EMPTY >
+<!ATTLIST VisibleTile id NMTOKEN #REQUIRED >
+
+<!ELEMENT SelectedTile EMPTY >
+<!ATTLIST SelectedTile id NMTOKEN #REQUIRED >
+<!ATTLIST SelectedTile maximized NMTOKEN #REQUIRED >
+
+<!ELEMENT Filters EMPTY >
+
+<!ELEMENT QueryOptions ( QueryOption+ ) >
+
+<!ELEMENT QueryOption EMPTY >
+<!ATTLIST QueryOption key NMTOKEN #REQUIRED >
+<!ATTLIST QueryOption value NMTOKEN #REQUIRED >
+
+<!ELEMENT SortRequest EMPTY >
+
+<!ELEMENT DisplayRules EMPTY >
+
+<!ELEMENT DataPanel ( DataItem+ ) >
+
+<!ELEMENT DataItem ( DataItem* ) >
+<!ATTLIST DataItem itemType ( Folder | ClassVar | Cube | Horizon | OutputVar | ComputedVar | InstrumentVar | RowStatistic | Statistic ) #REQUIRED >
+<!ATTLIST DataItem name CDATA #REQUIRED >
+<!ATTLIST DataItem label CDATA #REQUIRED >
+<!ATTLIST DataItem folderType NMTOKEN #IMPLIED >
+<!ATTLIST DataItem isTopLevelFolder NMTOKEN #IMPLIED >
+<!ATTLIST DataItem locked NMTOKEN #IMPLIED >
+<!ATTLIST DataItem index NMTOKEN #IMPLIED >
+<!ATTLIST DataItem horizonNumber NMTOKEN #IMPLIED >
+<!ATTLIST DataItem interval ( DAY ) #IMPLIED >
+<!ATTLIST DataItem count ( 1 | 2 | 3 | 4 | 5 ) #IMPLIED >
+<!ATTLIST DataItem cube ( 0 | 1 | 2 | 3 ) #IMPLIED >
+<!ATTLIST DataItem parent NMTOKEN #IMPLIED >
+
