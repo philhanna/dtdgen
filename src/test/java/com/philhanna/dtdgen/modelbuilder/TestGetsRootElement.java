@@ -32,8 +32,8 @@ public class TestGetsRootElement extends BaseTest {
    }
 
    @Test
-   public void handlesTypicalExploration() throws Exception {
-      runTest("ksink1.xml", "Analysis");
+   public void handlesTypicalCase() throws Exception {
+      runTest("stooges.xml", "stooges");
    }
 
    private void runTest(final String fileName, final String expected)

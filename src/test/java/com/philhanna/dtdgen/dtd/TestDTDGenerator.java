@@ -34,25 +34,26 @@ public class TestDTDGenerator extends BaseTest {
       // Analyze the input XML file
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final InputStream in = getTestData("allgraphs.xml");
+      final InputStream in = getTestData("stooges.xml");
       modelBuilder.run(in);
       in.close();
 
       // Print a DTD from the document model
-      
+
       final DocumentModel model = modelBuilder.getDocumentModel();
-      final File outputFile = File.createTempFile("allgraphs", ".dtd");
-     // outputFile.deleteOnExit();
-      log.info(String.format(
-            "Output DTD file is %s",
-            outputFile.getCanonicalPath()));
+      final File outputFile = File.createTempFile("stooges", ".dtd");
+      System.out.println(
+            "Output file is "
+                  + outputFile);
+      // outputFile.deleteOnExit();
+      log.info(String.format("Output DTD file is %s", outputFile.getCanonicalPath()));
       final PrintWriter out = new PrintWriter(new FileWriter(outputFile));
       final DTDGenerator dtdgen = new DTDGenerator(model);
       dtdgen.printDTD(out);
       out.flush();
       out.close();
 
-      final InputStream stream1 = getTestData("allgraphs.dtd");
+      final InputStream stream1 = getTestData("stooges.dtd");
       final InputStream stream2 = new FileInputStream(outputFile);
 
       // Compare the files to see if any change has happened
@@ -64,12 +65,12 @@ public class TestDTDGenerator extends BaseTest {
    public void getsCorrectRootElement() throws IOException, SAXException {
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final InputStream in = getTestData("allgraphs.xml");
+      final InputStream in = getTestData("stooges.xml");
       modelBuilder.run(in);
       in.close();
 
       final DocumentModel model = modelBuilder.getDocumentModel();
-      final String expected = "Analysis";
+      final String expected = "stooges";
       final String actual = model.getRootElementName();
       assertEquals(expected, actual);
    }
@@ -80,33 +81,36 @@ public class TestDTDGenerator extends BaseTest {
       // Analyze an .xml file to build a document model
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final InputStream in = getTestData("bench1.xml");
+      final InputStream in = getTestData("stooges.xml");
       modelBuilder.run(in);
       in.close();
-      
+
       // Check the details of the ATTLIST
 
       final DocumentModel model = modelBuilder.getDocumentModel();
 
       // <!ELEMENT Member EMPTY >
 
-      final ElementModel elementModel = model.getElementModel("Member");
+      final ElementModel elementModel = model.getElementModel("stooge");
       assertNotNull(elementModel);
 
       // Check for expected formatted values
 
       final String[] expectedAttlists = {
-            "<!ATTLIST Member name NMTOKEN #IMPLIED >",
-            "<!ATTLIST Member variable NMTOKEN #IMPLIED >",
-            "<!ATTLIST Member value CDATA #IMPLIED >",
-            };
+            "<!ATTLIST stooge name NMTOKEN #REQUIRED >",
+            "<!ATTLIST stooge rank NMTOKEN #REQUIRED >",
+      };
       final String[] actualAttlists = DTDGenerator.getATTLISTs(elementModel);
       assertNotNull(actualAttlists);
       assertEquals(expectedAttlists.length, actualAttlists.length);
       for (int i = 0, n = expectedAttlists.length; i < n; i++) {
          final String expected = expectedAttlists[i];
          final String actual = actualAttlists[i];
-         assertEquals("Mismatch in attlist " + i, expected, actual);
+         assertEquals(
+               "Mismatch in attlist "
+                     + i,
+               expected,
+               actual);
       }
 
    }
@@ -117,43 +121,46 @@ public class TestDTDGenerator extends BaseTest {
       // Analyze an .xml file to build a document model
 
       final DocumentModelBuilder modelBuilder = new DocumentModelBuilder();
-      final InputStream in = getTestData("bench1.xml");
+      final InputStream in = getTestData("stooges.xml");
       modelBuilder.run(in);
       in.close();
 
       // Check the details of the ATTLIST
-      
+
       final DocumentModel model = modelBuilder.getDocumentModel();
-      
+
       // <!ELEMENT Member EMPTY >
 
-      final ElementModel elementModel = model.getElementModel("Member");
-      assertNotNull(elementModel);
+      final ElementModel elementStooge = model.getElementModel("stooge");
+      assertNotNull(elementStooge);
 
       // Check for expected names
 
-      final String[] expectedNames = { "name", "variable", "value", };
+      final String[] expectedNames = {
+            "name",
+            "rank"
+      };
 
       int i = 0;
-      final Iterator<String> it = elementModel.attributeNameIterator();
+      final Iterator<String> it = elementStooge.attributeNameIterator();
       while (it.hasNext()) {
          final String actual = it.next();
          if (i >= expectedNames.length) {
-            final String errmsg = String
-                  .format(
-                        "More actual attributes than expected (%d). Actual attribute name was %s",
-                        expectedNames.length,
-                        actual);
+            final String errmsg = String.format(
+                  "More actual attributes than expected (%d). Actual attribute name was %s",
+                  expectedNames.length,
+                  actual);
             fail(errmsg);
          }
          final String expected = expectedNames[i];
-         assertEquals("Mismatch in attribute name " + i, expected, actual);
+         assertEquals(
+               "Mismatch in attribute name "
+                     + i,
+               expected,
+               actual);
          i++;
       }
-      assertEquals(
-            "Fewer attribute names found than expected",
-            expectedNames.length,
-            i);
+      assertEquals("Fewer attribute names found than expected", expectedNames.length, i);
    }
 
 }
