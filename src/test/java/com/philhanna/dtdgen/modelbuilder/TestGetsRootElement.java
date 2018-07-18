@@ -2,8 +2,6 @@ package com.philhanna.dtdgen.modelbuilder;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -14,7 +12,6 @@ import org.xml.sax.SAXException;
 
 import com.philhanna.dtdgen.BaseTest;
 import com.philhanna.dtdgen.DocumentModel;
-import com.philhanna.dtdgen.modelbuilder.DocumentModelBuilder;
 
 /**
  * Unit tests for getting the root element of a body
