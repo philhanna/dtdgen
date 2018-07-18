@@ -19,7 +19,7 @@ public class TestVersion {
       final File projectRoot = new File(".").getCanonicalFile();
       final File versionFile = new File(
             projectRoot,
-            "/Source/Java/version.properties");
+            "src/main/resources/version.properties");
       final Reader reader = new FileReader(versionFile);
       config.load(reader);
       reader.close();
