@@ -122,14 +122,6 @@ public class AttributeModelImpl implements AttributeModel {
       this.unique = unique;
    }
 
-   public List<String> getDistinctValues() {
-      final List<String> list = new ArrayList<String>();
-      for (String value : values) {
-         list.add(value);
-      }
-      return list;
-   }
-
    public boolean contains(String value) {
       return values.contains(value);
    }
@@ -141,4 +133,22 @@ public class AttributeModelImpl implements AttributeModel {
    public void setOccurrences(int occurrences) {
       this.occurrences = occurrences;
    }
+
+   @Override
+   public String toString() {
+      return "AttributeModelImpl [name="
+            + name
+            + ", occurrences="
+            + occurrences
+            + ", unique="
+            + unique
+            + ", values="
+            + values
+            + ", allNames="
+            + allNames
+            + ", allNMTOKENs="
+            + allNMTOKENs
+            + "]";
+   }
+   
 }

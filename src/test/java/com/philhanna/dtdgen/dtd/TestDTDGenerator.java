@@ -42,10 +42,6 @@ public class TestDTDGenerator extends BaseTest {
 
       final DocumentModel model = modelBuilder.getDocumentModel();
       final File outputFile = File.createTempFile("stooges", ".dtd");
-      System.out.println(
-            "Output file is "
-                  + outputFile);
-      // outputFile.deleteOnExit();
       log.info(String.format("Output DTD file is %s", outputFile.getCanonicalPath()));
       final PrintWriter out = new PrintWriter(new FileWriter(outputFile));
       final DTDGenerator dtdgen = new DTDGenerator(model);

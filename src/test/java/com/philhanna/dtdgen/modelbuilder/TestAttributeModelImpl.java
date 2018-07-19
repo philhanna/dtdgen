@@ -1,6 +1,7 @@
 package com.philhanna.dtdgen.modelbuilder;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +24,7 @@ public class TestAttributeModelImpl {
       attributeModel.addValue("Shemp");
       attributeModel.addValue("Curly Joe");
    }
-   
+
    @Test
    public void checkDefaults() {
       assertEquals(0, attributeModel.getOccurrences());
@@ -53,5 +54,27 @@ public class TestAttributeModelImpl {
       attributeModel.incrementOccurrences();
       attributeModel.incrementOccurrences();
       assertEquals(3, attributeModel.getOccurrences());
+   }
+   
+   @Test
+   public void testNMTokens() {
+      assertTrue(attributeModel.isAllNMTOKENs());
+   }
+   
+   @Test
+   public void testNMTokensFalse() {
+      attributeModel.setAllNMTOKENs(false);
+      assertFalse(attributeModel.isAllNMTOKENs());
+   }
+   
+   @Test
+   public void testGetDistinctValues() {
+      assertTrue(attributeModel.contains("Larry"));
+      assertTrue(attributeModel.contains("Curly"));
+      assertTrue(attributeModel.contains("Moe"));
+      assertTrue(attributeModel.contains("Shemp"));
+      assertTrue(attributeModel.contains("Curly Joe"));
+      
+      assertFalse(attributeModel.contains("bogus"));
    }
 }
