@@ -1,6 +1,10 @@
 package com.philhanna.dtdgen.dtd;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,15 +45,30 @@ public class TestMain {
    }
 
    @Test
+   public void testStateEnum() throws Exception {
+      assertEquals(2, Main.State.values().length);
+      assertNotNull(Main.State.valueOf("READING_OPTIONS"));
+      assertNotNull(Main.State.valueOf("EXPECTING_OUTPUT_FILE"));
+      try {
+         String badValue = "BOGUS";
+         assertNull(Main.State.valueOf(badValue));
+         fail("Should have thrown an exception");
+      }
+      catch (IllegalArgumentException e) {
+         // Expected
+      }
+   }
+
+   @Test
    public void testNoArgs() throws Exception {
       Main.main(new String[] {});
       System.out.flush();
       final String actual = new String(baos.toByteArray());
       assertTrue(actual.contains("<inputFile>"));
    }
-   
+
    @Test
-   public void testGetVersion() throws IOException {
+   public void testGetVersion() throws Exception {
       Main.main(new String[] { "-v" });
       System.out.flush();
       final String actual = new String(baos.toByteArray());
@@ -57,18 +76,38 @@ public class TestMain {
    }
 
    @Test
-   public void testGetVersionLong() throws IOException {
+   public void testGetVersionLong() throws Exception {
       Main.main(new String[] { "file1", "file2", "--version" });
    }
 
    @Test
-   public void testGetHelp() throws IOException {
+   public void testGetHelp() throws Exception {
       Main.main(new String[] { "-h" });
    }
 
    @Test
-   public void testGetHelpLong() throws IOException {
+   public void testGetHelpLong() throws Exception {
       Main.main(new String[] { "file1", "file2", "--help" });
    }
 
+   @Test
+   public void testWithFiles() throws Exception {
+      try {
+         Main.main(new String[] { "file1", "file2"});
+         fail("Should have thrown an exception");
+      }
+      catch (IOException e) {
+         // Expected
+      }
+   }
+   
+   @Test
+   public void testNoOutputFile() throws Exception {
+      try {
+         Main.main(new String[] {"-o"});
+      }
+      catch (IllegalArgumentException e) {
+         // Expected
+      }
+   }
 }
