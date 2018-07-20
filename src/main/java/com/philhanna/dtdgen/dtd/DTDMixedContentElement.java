@@ -4,10 +4,11 @@ import com.philhanna.dtdgen.ChildModel;
 import com.philhanna.dtdgen.ElementModel;
 
 /**
- * A DTDElementModel that represents an element with both element and <code>#PCDATA</code>.
+ * A DTDElementModel that represents an element with both element and
+ * <code>#PCDATA</code>.
  */
 public class DTDMixedContentElement extends DTDElementModel {
-   
+
    /**
     * Creates a new element declaration over the specified element model
     * @param elementModel the element model
@@ -17,7 +18,8 @@ public class DTDMixedContentElement extends DTDElementModel {
    }
 
    /**
-    * Generates the &lt;!ELEMENT&gt; string for this mixed content element
+    * Generates the &lt;!ELEMENT&gt; string for this mixed content
+    * element
     */
    @Override
    public String toString() {

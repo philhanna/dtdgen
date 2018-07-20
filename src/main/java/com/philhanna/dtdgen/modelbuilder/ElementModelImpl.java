@@ -161,7 +161,7 @@ public class ElementModelImpl implements ElementModel {
    // Instance methods (private)
    // ==================================================================
 
-   public void addChild(ChildModelImpl childModel) {
+   public void addChild(ChildModel childModel) {
       childseq.add(childModel);
    }
 }

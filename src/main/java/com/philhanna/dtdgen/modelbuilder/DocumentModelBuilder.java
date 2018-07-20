@@ -18,8 +18,8 @@ import com.philhanna.dtdgen.ChildModel;
 import com.philhanna.dtdgen.DocumentModel;
 
 /**
- * Analyzes an instance of an XML document to build a documentModel of its
- * structure
+ * Analyzes an instance of an XML document to build a documentModel of
+ * its structure
  */
 
 public class DocumentModelBuilder extends DefaultHandler {
@@ -49,13 +49,12 @@ public class DocumentModelBuilder extends DefaultHandler {
    // ==================================================================
 
    private DocumentModelImpl documentModel = new DocumentModelImpl();
-   
+
    /**
     * Stack of elements currently open; each entry is a StackEntry
     * object
     */
    private Stack<StackEntry> elementStack = new Stack<StackEntry>();
-   
 
    // ==================================================================
    // Implementation of content handler interface
@@ -66,8 +65,10 @@ public class DocumentModelBuilder extends DefaultHandler {
     * element
     */
    @Override
-   public void characters(char ch[], int start, int length) throws SAXException {
-      final ElementModelImpl elementModel = elementStack.peek().getElementModel();
+   public void characters(char ch[], int start, int length)
+         throws SAXException {
+      final ElementModelImpl elementModel = elementStack.peek()
+            .getElementModel();
       if (!elementModel.hasCharacterContent()) {
          for (int i = start; i < start + length; i++) {
             if (ch[i] > 0x20) {
@@ -92,7 +93,8 @@ public class DocumentModelBuilder extends DefaultHandler {
 
       // Create an entry in the Element List, or locate the cached entry
 
-      ElementModelImpl elementModel = documentModel.getElementModelImpl(elementName);
+      ElementModelImpl elementModel = documentModel
+            .getElementModelImpl(elementName);
       if (elementModel == null) {
          elementModel = new ElementModelImpl(elementName);
          documentModel.addElementModelImpl(elementModel);
@@ -171,8 +173,8 @@ public class DocumentModelBuilder extends DefaultHandler {
          // For sequencing, we're interested in consecutive groups of
          // the same child element type
 
-         final boolean isFirstInGroup = !elementName.equals(parent
-               .getLatestChildName());
+         final boolean isFirstInGroup = !elementName
+               .equals(parent.getLatestChildName());
          if (isFirstInGroup) {
             parent.incrementSequenceNumber();
          }
@@ -181,14 +183,13 @@ public class DocumentModelBuilder extends DefaultHandler {
          // If we've seen this child of this parent before, get the
          // details
 
-         ChildModelImpl childDetails = (ChildModelImpl) parentDetails
-               .getChildModel(elementName);
+         ChildModel childDetails = parentDetails.getChildModel(elementName);
          if (childDetails == null) {
 
             // This is the first time we've seen this child belonging to
             // this parent
 
-            childDetails = new ChildModelImpl(elementName);
+            childDetails = new ChildModel(elementName);
 
             childDetails.setRepeatable(false);
             childDetails.setOptional(false);
@@ -222,7 +223,8 @@ public class DocumentModelBuilder extends DefaultHandler {
                parentDetails.setSequenced(false);
             }
             else {
-               final ChildModel childModel = parentDetails.getChildModel(parentIndex);
+               final ChildModel childModel = parentDetails
+                     .getChildModel(parentIndex);
                if (!childModel.getName().equals(elementName)) {
                   parentDetails.setSequenced(false);
                }
@@ -251,13 +253,14 @@ public class DocumentModelBuilder extends DefaultHandler {
       // less than the number in previous elements, then the absent
       // children are marked as optional
 
-      final ElementModelImpl elementDetails = documentModel.getElementModelImpl(elementName);
+      final ElementModelImpl elementDetails = documentModel
+            .getElementModelImpl(elementName);
       if (elementDetails.isSequenced()) {
          final StackEntry stackEntry = elementStack.peek();
          final int seq = stackEntry.getSequenceNumber();
          final int n = elementDetails.getChildModelCount();
          for (int i = seq + 1; i < n; i++) {
-            final ChildModelImpl childDetails = (ChildModelImpl) elementDetails.getChildModel(i);
+            final ChildModel childDetails = elementDetails.getChildModel(i);
             childDetails.setOptional(true);
          }
       }
@@ -270,7 +273,7 @@ public class DocumentModelBuilder extends DefaultHandler {
    // ==================================================================
    // Instance methods
    // ==================================================================
-   
+
    /**
     * Runs an XML input stream through the model builder
     * @param in an input stream
@@ -296,12 +299,12 @@ public class DocumentModelBuilder extends DefaultHandler {
    }
 
    /**
-    * Returns the document model constructed from the XML source file(s).
+    * Returns the document model constructed from the XML source
+    * file(s).
     */
    public DocumentModel getDocumentModel() {
       return documentModel;
    }
-
 
    // ==================================================================
    // Private methods
@@ -335,33 +338,10 @@ public class DocumentModelBuilder extends DefaultHandler {
                || c == '.'
                || c == '_'
                || c == '-'
-               || c == ':' || c > 128))
+               || c == ':'
+               || c > 128))
             return false;
       }
       return true;
    }
-
-   // ==================================================================
-   // Inner classes
-   // ==================================================================
-/*
-   private static final class DocumentModelImpl extends DocumentModel {
-
-      private final Map<String, ElementModel> elementMap = new TreeMap<String, ElementModel>();
-
-      public DocumentModelImpl(Map<String, ElementModelImpl> elementImplMap) {
-         for (final String elementName : elementImplMap.keySet()) {
-            final ElementModel elementModel = elementImplMap
-                  .get(elementName);
-            elementMap.put(elementName, elementModel);
-         }
-      }
-
-      @Override
-      public Map<String, ElementModel> getElementMap() {
-         return elementMap;
-      }
-
-   }
-*/
 }
