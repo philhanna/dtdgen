@@ -53,11 +53,11 @@ public class DocumentModelImpl extends DocumentModel {
    // Instance methods
    // ====================================================================
 
-   ElementModelImpl getElementModelImpl(String elementName) {
-      return (ElementModelImpl) getElementModel(elementName);
+   public ElementModel getElementModelImpl(String elementName) {
+      return getElementModel(elementName);
    }
    
-   void addElementModelImpl(ElementModelImpl elementModel) {
+   public void addElementModelImpl(ElementModel elementModel) {
       final String elementName = elementModel.getName();
       elementMap.put(elementName, elementModel);
    }

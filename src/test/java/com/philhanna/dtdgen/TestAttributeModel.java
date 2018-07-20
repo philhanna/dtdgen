@@ -1,4 +1,4 @@
-package com.philhanna.dtdgen.modelbuilder;
+package com.philhanna.dtdgen;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,9 +11,9 @@ import org.junit.Test;
 import com.philhanna.dtdgen.AttributeModel;
 
 /**
- * Unit tests for AttributeModelImpl
+ * Unit tests for AttributeModel
  */
-public class TestAttributeModelImpl {
+public class TestAttributeModel {
 
    private AttributeModel attributeModel;
    

@@ -42,7 +42,10 @@ public class TestDTDGenerator extends BaseTest {
 
       final DocumentModel model = modelBuilder.getDocumentModel();
       final File outputFile = File.createTempFile("stooges", ".dtd");
-      log.info(String.format("Output DTD file is %s", outputFile.getCanonicalPath()));
+      log.info(
+            String.format(
+                  "Output DTD file is %s",
+                  outputFile.getCanonicalPath()));
       final PrintWriter out = new PrintWriter(new FileWriter(outputFile));
       final DTDGenerator dtdgen = new DTDGenerator(model);
       dtdgen.printDTD(out);
@@ -94,19 +97,14 @@ public class TestDTDGenerator extends BaseTest {
 
       final String[] expectedAttlists = {
             "<!ATTLIST stooge name NMTOKEN #REQUIRED >",
-            "<!ATTLIST stooge rank NMTOKEN #REQUIRED >",
-      };
+            "<!ATTLIST stooge rank NMTOKEN #REQUIRED >", };
       final String[] actualAttlists = DTDGenerator.getATTLISTs(elementModel);
       assertNotNull(actualAttlists);
       assertEquals(expectedAttlists.length, actualAttlists.length);
       for (int i = 0, n = expectedAttlists.length; i < n; i++) {
          final String expected = expectedAttlists[i];
          final String actual = actualAttlists[i];
-         assertEquals(
-               "Mismatch in attlist "
-                     + i,
-               expected,
-               actual);
+         assertEquals("Mismatch in attlist " + i, expected, actual);
       }
 
    }
@@ -132,10 +130,7 @@ public class TestDTDGenerator extends BaseTest {
 
       // Check for expected names
 
-      final String[] expectedNames = {
-            "name",
-            "rank"
-      };
+      final String[] expectedNames = { "name", "rank" };
 
       int i = 0;
       final Iterator<String> it = elementStooge.attributeNameIterator();
@@ -149,14 +144,13 @@ public class TestDTDGenerator extends BaseTest {
             fail(errmsg);
          }
          final String expected = expectedNames[i];
-         assertEquals(
-               "Mismatch in attribute name "
-                     + i,
-               expected,
-               actual);
+         assertEquals("Mismatch in attribute name " + i, expected, actual);
          i++;
       }
-      assertEquals("Fewer attribute names found than expected", expectedNames.length, i);
+      assertEquals(
+            "Fewer attribute names found than expected",
+            expectedNames.length,
+            i);
    }
 
 }

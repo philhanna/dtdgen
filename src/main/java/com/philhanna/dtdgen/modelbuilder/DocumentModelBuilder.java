@@ -16,6 +16,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import com.philhanna.dtdgen.AttributeModel;
 import com.philhanna.dtdgen.ChildModel;
 import com.philhanna.dtdgen.DocumentModel;
+import com.philhanna.dtdgen.ElementModel;
 
 /**
  * Analyzes an instance of an XML document to build a documentModel of
@@ -67,7 +68,7 @@ public class DocumentModelBuilder extends DefaultHandler {
    @Override
    public void characters(char ch[], int start, int length)
          throws SAXException {
-      final ElementModelImpl elementModel = elementStack.peek()
+      final ElementModel elementModel = elementStack.peek()
             .getElementModel();
       if (!elementModel.hasCharacterContent()) {
          for (int i = start; i < start + length; i++) {
@@ -93,10 +94,10 @@ public class DocumentModelBuilder extends DefaultHandler {
 
       // Create an entry in the Element List, or locate the cached entry
 
-      ElementModelImpl elementModel = documentModel
+      ElementModel elementModel = documentModel
             .getElementModelImpl(elementName);
       if (elementModel == null) {
-         elementModel = new ElementModelImpl(elementName);
+         elementModel = new ElementModel(elementName);
          documentModel.addElementModelImpl(elementModel);
       }
 
@@ -168,7 +169,7 @@ public class DocumentModelBuilder extends DefaultHandler {
 
       if (!elementStack.isEmpty()) {
          final StackEntry parent = elementStack.peek();
-         final ElementModelImpl parentDetails = parent.getElementModel();
+         final ElementModel parentDetails = parent.getElementModel();
 
          // For sequencing, we're interested in consecutive groups of
          // the same child element type
@@ -253,7 +254,7 @@ public class DocumentModelBuilder extends DefaultHandler {
       // less than the number in previous elements, then the absent
       // children are marked as optional
 
-      final ElementModelImpl elementDetails = documentModel
+      final ElementModel elementDetails = documentModel
             .getElementModelImpl(elementName);
       if (elementDetails.isSequenced()) {
          final StackEntry stackEntry = elementStack.peek();

@@ -1,4 +1,4 @@
-package com.philhanna.dtdgen.modelbuilder;
+package com.philhanna.dtdgen;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,8 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-import com.philhanna.dtdgen.BaseTest;
 import com.philhanna.dtdgen.DocumentModel;
+import com.philhanna.dtdgen.modelbuilder.DocumentModelBuilder;
 
 /**
  * Unit tests for getting the root element of a body

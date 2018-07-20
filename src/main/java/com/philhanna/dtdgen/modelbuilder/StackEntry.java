@@ -1,5 +1,7 @@
 package com.philhanna.dtdgen.modelbuilder;
 
+import com.philhanna.dtdgen.ElementModel;
+
 /**
  * StackEntry is a data structure we put on the stack for each nested
  * element
@@ -18,7 +20,7 @@ public class StackEntry {
    // Instance variables
    // ====================================================================
 
-   private final ElementModelImpl elementModel;
+   private final ElementModel elementModel;
    private int sequenceNumber = -1;
    private String latestChildName;
 
@@ -26,7 +28,7 @@ public class StackEntry {
    // Constructors
    // ====================================================================
 
-   public StackEntry(ElementModelImpl elementModel) {
+   public StackEntry(ElementModel elementModel) {
       this.elementModel = elementModel;
    }
 
@@ -34,7 +36,7 @@ public class StackEntry {
    // Instance methods
    // ====================================================================
 
-   public ElementModelImpl getElementModel() {
+   public ElementModel getElementModel() {
       return elementModel;
    }
 

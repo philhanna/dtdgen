@@ -106,7 +106,7 @@ public abstract class DocumentModel {
    public abstract Iterator<String> elementNameIterator();
 
    /**
-    * Returns the {@link ElementModel} with the given name
+    * Returns the {@link Foo} with the given name
     * @param elementName the element name
     * @return the element model with that name, or <code>null</code>, if
     *         it does not exist in the document model
