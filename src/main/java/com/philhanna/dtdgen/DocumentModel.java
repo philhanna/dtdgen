@@ -4,18 +4,27 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Provides access to what is known about the structure of a set of XML
  * document instances
  */
-public abstract class DocumentModel {
+public class DocumentModel {
 
    // ====================================================================
-   // Instance methods
+   // Class constants and variables
    // ====================================================================
 
+   // ====================================================================
+   // Class methods
+   // ====================================================================
+
+   // ====================================================================
+   // Instance variables
+   // ====================================================================
    /**
     * Returns the root element name. This is determined by looking at
     * all elements in the element name list and deleting of their known
@@ -95,15 +104,20 @@ public abstract class DocumentModel {
       return rootElementName;
    }
 
+   /**
+    * Alphabetical list of element types appearing in the document; each
+    * has the element name as a key and an ElementModelImpl object as
+    * the value.
+    */
+   private final Map<String, ElementModel> elementMap = new TreeMap<String, ElementModel>();
+
    // ====================================================================
-   // Abstract instance methods that must be implemented by child
-   // classes
+   // Constructors
    // ====================================================================
 
-   /**
-    * Returns an iterator over the list of element model names
-    */
-   public abstract Iterator<String> elementNameIterator();
+   // ====================================================================
+   // Implementation of DocumentModel
+   // ====================================================================
 
    /**
     * Returns the {@link Foo} with the given name
@@ -111,5 +125,28 @@ public abstract class DocumentModel {
     * @return the element model with that name, or <code>null</code>, if
     *         it does not exist in the document model
     */
-   public abstract ElementModel getElementModel(String elementName);
+   public ElementModel getElementModel(String elementName) {
+      return elementMap.get(elementName);
+   }
+
+   /**
+    * Returns an iterator over the list of element model names
+    */
+   public Iterator<String> elementNameIterator() {
+      return elementMap.keySet().iterator();
+   }
+
+   // ====================================================================
+   // Instance methods
+   // ====================================================================
+
+   public ElementModel getElementModelImpl(String elementName) {
+      return getElementModel(elementName);
+   }
+
+   public void addElementModelImpl(ElementModel elementModel) {
+      final String elementName = elementModel.getName();
+      elementMap.put(elementName, elementModel);
+   }
+
 }

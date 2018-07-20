@@ -49,7 +49,7 @@ public class DocumentModelBuilder extends DefaultHandler {
    // Instance variables
    // ==================================================================
 
-   private DocumentModelImpl documentModel = new DocumentModelImpl();
+   private DocumentModel documentModel = new DocumentModel();
 
    /**
     * Stack of elements currently open; each entry is a StackEntry
