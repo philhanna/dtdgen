@@ -140,11 +140,7 @@ public class DocumentModel {
    // Instance methods
    // ====================================================================
 
-   public ElementModel getElementModelImpl(String elementName) {
-      return getElementModel(elementName);
-   }
-
-   public void addElementModelImpl(ElementModel elementModel) {
+   public void addElementModel(ElementModel elementModel) {
       final String elementName = elementModel.getName();
       elementMap.put(elementName, elementModel);
    }

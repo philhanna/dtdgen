@@ -68,8 +68,7 @@ public class DocumentModelBuilder extends DefaultHandler {
    @Override
    public void characters(char ch[], int start, int length)
          throws SAXException {
-      final ElementModel elementModel = elementStack.peek()
-            .getElementModel();
+      final ElementModel elementModel = elementStack.peek().getElementModel();
       if (!elementModel.hasCharacterContent()) {
          for (int i = start; i < start + length; i++) {
             if (ch[i] > 0x20) {
@@ -95,10 +94,10 @@ public class DocumentModelBuilder extends DefaultHandler {
       // Create an entry in the Element List, or locate the cached entry
 
       ElementModel elementModel = documentModel
-            .getElementModelImpl(elementName);
+            .getElementModel(elementName);
       if (elementModel == null) {
          elementModel = new ElementModel(elementName);
-         documentModel.addElementModelImpl(elementModel);
+         documentModel.addElementModel(elementModel);
       }
 
       // Retain the associated element details object and initialize
@@ -255,7 +254,7 @@ public class DocumentModelBuilder extends DefaultHandler {
       // children are marked as optional
 
       final ElementModel elementDetails = documentModel
-            .getElementModelImpl(elementName);
+            .getElementModel(elementName);
       if (elementDetails.isSequenced()) {
          final StackEntry stackEntry = elementStack.peek();
          final int seq = stackEntry.getSequenceNumber();
