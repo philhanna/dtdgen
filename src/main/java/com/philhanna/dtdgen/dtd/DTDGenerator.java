@@ -50,10 +50,10 @@ public class DTDGenerator {
    // ====================================================================
 
    /**
-    * Constructs the list of <!ATTLIST> for an element
+    * Constructs the list of &lt;!ATTLIST&gt; for an element
     * 
     * @param elementModel an element model
-    * @return an array of strings with the <!ATTLIST>s
+    * @return an array of strings with the &lt;!ATTLIST&gt;s
     */
    public static final String[] getATTLISTs(ElementModel elementModel) {
 
