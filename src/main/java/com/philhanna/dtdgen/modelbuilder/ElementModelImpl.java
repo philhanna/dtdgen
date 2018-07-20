@@ -1,6 +1,10 @@
 package com.philhanna.dtdgen.modelbuilder;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.philhanna.dtdgen.AttributeModel;
 import com.philhanna.dtdgen.ChildModel;
@@ -29,7 +33,7 @@ public class ElementModelImpl implements ElementModel {
    private boolean hasCharacterContent = false;
    private boolean sequenced = true;
    private final List<ChildModel> childseq = new ArrayList<ChildModel>();
-   private final Map<String, AttributeModelImpl> attributes = new LinkedHashMap<String, AttributeModelImpl>();
+   private final Map<String, AttributeModel> attributes = new LinkedHashMap<String, AttributeModel>();
    
    /**
     * Minimum number of attribute values that must appear for the
@@ -102,7 +106,7 @@ public class ElementModelImpl implements ElementModel {
    public String getIDAttributeName() {
 
       for (final String attrName : attributes.keySet()) {
-         final AttributeModelImpl attributeModel = attributes.get(attrName);
+         final AttributeModel attributeModel = attributes.get(attrName);
 
          /*
           * If every value of the attribute is distinct, and there are
@@ -141,11 +145,11 @@ public class ElementModelImpl implements ElementModel {
       occurrences++;
    }
 
-   AttributeModelImpl getAttribute(String attributeName) {
+   AttributeModel getAttribute(String attributeName) {
       return attributes.get(attributeName);
    }
 
-   void addAttribute(AttributeModelImpl attributeModel) {
+   void addAttribute(AttributeModel attributeModel) {
       attributes.put(attributeModel.getName(), attributeModel);
    }
 

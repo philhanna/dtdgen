@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.philhanna.dtdgen.AttributeModel;
 import com.philhanna.dtdgen.ChildModel;
 import com.philhanna.dtdgen.DocumentModel;
 
@@ -114,10 +115,10 @@ public class DocumentModelBuilder extends DefaultHandler {
          final String attributeName = attributes.getQName(i);
          final String attributeValue = attributes.getValue(i);
 
-         AttributeModelImpl attributeModel = elementModel
+         AttributeModel attributeModel = elementModel
                .getAttribute(attributeName);
          if (attributeModel == null) {
-            attributeModel = new AttributeModelImpl(attributeName);
+            attributeModel = new AttributeModel(attributeName);
             elementModel.addAttribute(attributeModel);
          }
 

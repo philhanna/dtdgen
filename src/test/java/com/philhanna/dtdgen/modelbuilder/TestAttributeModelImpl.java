@@ -8,16 +8,18 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.philhanna.dtdgen.AttributeModel;
+
 /**
  * Unit tests for AttributeModelImpl
  */
 public class TestAttributeModelImpl {
 
-   private AttributeModelImpl attributeModel;
+   private AttributeModel attributeModel;
    
    @Before
    public void setUp() throws Exception {
-      attributeModel = new AttributeModelImpl("stooge");
+      attributeModel = new AttributeModel("stooge");
       attributeModel.addValue("Larry");
       attributeModel.addValue("Curly");
       attributeModel.addValue("Moe");
@@ -41,7 +43,7 @@ public class TestAttributeModelImpl {
 
    @Test
    public void testGetFirstValueOnEmptyList() {
-      final AttributeModelImpl adNull = new AttributeModelImpl("stooge");
+      final AttributeModel adNull = new AttributeModel("stooge");
       assertNull(adNull.getFirstValue());
       adNull.addValue("Max");
       assertEquals("Max", adNull.getFirstValue());
