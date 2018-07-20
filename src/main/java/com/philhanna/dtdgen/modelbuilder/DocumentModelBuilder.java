@@ -22,7 +22,6 @@ import com.philhanna.dtdgen.ElementModel;
  * Analyzes an instance of an XML document to build a documentModel of
  * its structure
  */
-
 public class DocumentModelBuilder extends DefaultHandler {
 
    // ==================================================================
